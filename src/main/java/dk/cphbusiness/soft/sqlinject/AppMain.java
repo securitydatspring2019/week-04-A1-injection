@@ -1,8 +1,6 @@
 package dk.cphbusiness.soft.sqlinject;
 
-import static dk.cphbusiness.soft.sqlinject.PlaceHolders.field;
-import static dk.cphbusiness.soft.sqlinject.PlaceHolders.string;
-import static dk.cphbusiness.soft.sqlinject.PlaceHolders.stringList;
+import static dk.cphbusiness.soft.sqlinject.PlaceHolders.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,8 +15,9 @@ public class AppMain {
     try {
       String id = "2 or 1=1"; 
       String name = "Jens' or ''='"; 
-      injectSimpleStatement( id, name );
-      injectPreparedStatement( id, name );
+      injectSimpleStatement(id, name);
+      injectPreparedStatement(id, name);
+      injectPlaceHolderStatement(id, name);
       }
     catch (Exception e) { e.printStackTrace(); }
     }
@@ -37,6 +36,21 @@ public class AppMain {
           Statement stmt = con.createStatement();
           ResultSet rs = stmt.executeQuery(
               "SELECT * FROM junk WHERE id = "+id+" and name = '"+name+"'"
+              )
+        ) {
+      while (rs.next()) 
+          System.out.println(
+              "--> "+rs.getInt("id")+" "+rs.getString("name")+" "+rs.getString("role")
+              );
+      }
+    }
+
+  private static void injectPlaceHolderStatement( String id, String name ) throws SQLException, ClassNotFoundException {
+    System.out.println( "Placeholder inject" );
+    try ( Connection con = getConnection();
+          Statement stmt = con.createStatement();
+          ResultSet rs = stmt.executeQuery(
+              "SELECT * FROM junk WHERE id = "+integer(id)+" and name = "+string(name)
               )
         ) {
       while (rs.next()) 
