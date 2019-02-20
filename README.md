@@ -4,6 +4,14 @@ The plan for this week is to take a closer look at SQL injection,
 how it is prevented,
 and some advice for securing the rest of the DB in case of penetration.
 
+## Learning Goals
+
+After this week you are able to:
+
+* Perform an attack on an unprotected database
+* Prevent attacks on your database
+* Explain the general principle behind injection attacks
+
 ## What to Read
 
 * W3Schools has an overview of sql injection which is a good start
@@ -17,15 +25,15 @@ and some advice for securing the rest of the DB in case of penetration.
 
 Slides: [04-A1 SQL injection.pdf](https://github.com/SecurityDatFall2018/Week-1/blob/master/04-A1%20SQL%20injection.pdf)
 
-
-## Learning Goals
-
-After this week you are able to:
-* Perform an attack on an unprotected database
-* Prevent attacks on your database
-* Explain the general principle behind injection attacks
-
-## Exercises
+## Exercise
 
 Implement the placeholders from `PlaceHolders.java`
 in the `dk.cphbusiness.soft.sqlinject` package.
+
+
+## Exam questions
+
+* Give an example of a SQL inject which will give all users in a user table
+* Explain how prepared statements prevent SQL injection
+* Explain how to use placeholders in cases where prepared statements cannot do the job
+* Explain how logging could be used to monitor injection attempts
