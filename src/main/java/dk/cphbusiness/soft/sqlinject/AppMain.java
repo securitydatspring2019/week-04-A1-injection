@@ -14,16 +14,21 @@ public class AppMain {
   public static void main( String[] args ) throws SQLException, ClassNotFoundException {
     try {
       String id = "2 or 1=1"; 
+      String idNoShit = "2";
       String name = "Jens' or ''='"; 
       injectSimpleStatement(id, name);
-      injectPreparedStatement(id, name);
-      injectPlaceHolderStatement(id, name);
+      injectPreparedStatement(idNoShit, name);
+      injectPlaceHolderStatement(idNoShit, name);
+      placeHolderSortStatement("name");
+      placeHolderSortStatement("id");
+      placeHolderSortStatement("id; DROP TABLE junk; --");
       }
     catch (Exception e) { e.printStackTrace(); }
     }
 
   private static void sortExample(String sortKey) {
-    String sql = "select * from junk order by "+field("name", "id")+";";
+    String sql = "select * from junk order by "+field("name", "name", "id")+";";
+    
     }
 
   private static void inExample(String... options) {
@@ -36,6 +41,21 @@ public class AppMain {
           Statement stmt = con.createStatement();
           ResultSet rs = stmt.executeQuery(
               "SELECT * FROM junk WHERE id = "+id+" and name = '"+name+"'"
+              )
+        ) {
+      while (rs.next()) 
+          System.out.println(
+              "--> "+rs.getInt("id")+" "+rs.getString("name")+" "+rs.getString("role")
+              );
+      }
+    }
+
+  private static void placeHolderSortStatement(String field) throws SQLException, ClassNotFoundException {
+    System.out.println( "Placeholder inject" );
+    try ( Connection con = getConnection();
+          Statement stmt = con.createStatement();
+          ResultSet rs = stmt.executeQuery(
+              "select * from junk order by "+field(field, "name", "id")+";"
               )
         ) {
       while (rs.next()) 
