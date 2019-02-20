@@ -23,7 +23,7 @@ After this week you are able to:
 * SQL inject with assignment: https://github.com/SecurityDatFall2018/Week-4-SQLInject
 * On XSS: [Cross-site Scripting (XSS) Attack](https://www.acunetix.com/websitesecurity/cross-site-scripting/)
 
-Slides: [04-A1 SQL injection.pdf](https://github.com/SecurityDatFall2018/Week-1/blob/master/04-A1%20SQL%20injection.pdf)
+Slides: [04-A1 SQL injection.pdf](https://github.com/securitydatspring2019/week-04-A1-injection/blob/master/04-A1%20SQL%20injection.pdf)
 
 ## Exercise
 
