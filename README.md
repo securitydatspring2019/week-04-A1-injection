@@ -1,4 +1,4 @@
-# Week-04 A1 SQL injection
+# A1 SQL injection
 
 The plan for this week is to take a closer look at SQL injection,
 how it is prevented,
